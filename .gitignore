@@ -1,0 +1,6 @@
+.Rhistory
+*.Rproj
+.Rproj.user
+.RData
+.DS_Store
+tests/testthat/connection_to_datasets/local_settings.csv

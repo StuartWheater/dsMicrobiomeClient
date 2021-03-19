@@ -1,0 +1,61 @@
+---
+title: "Capscale Demo"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Demo of dsMicrobiomeClient
+
+## Setup DataSHIELD's dsMicrobiome package
+
+### Requirements
+
+- Opal  4.0.2 (server - service)
+- opalr 2.0.0 (client - R Package)
+- vegan 2.5-7 (server - R Package)
+
+### Load packages
+
+```{r}
+library('DSI')
+library('DSOpal')
+library('dsBaseClient')
+library('dsMicrobiomeClient')
+```
+
+### Login
+
+```{r}
+builder <- DSI::newDSLoginBuilder()
+
+builder$append(server = "study", url = "http://192.168.56.100:8080", user = "administrator", password = "datashield_test&", table = "hackathon.data", driver = "OpalDriver")
+
+logindata <- builder$build()
+conns <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D")
+```
+
+## Demo sequence ds.capscale_assign
+
+```{r}
+print(ds.colnames("D"))
+tryCatch(ds.capscale_assign(class_Actinobacteria_id_419~class_Alphaproteobacteria_id_2379, data.name="D", newobj="A", datasources=conns), error = function(e) { print(e); print(DSI::datashield.errors()) })
+DSI::datashield.errors()
+ds.ls(datasources=conns)
+
+ds.class("A", datasources=conns)
+```
+
+## Demo sequence ds.capscale
+
+```{r}
+res <- ds.capscale(formula=breads~cheese, data.name="F", datasources=conns)
+DSI::datashield.errors()
+print(res)
+```
+
+## Logout
+
+```{r}
+DSI::datashield.logout(conns)
+```

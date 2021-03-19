@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^README.txt$
+^LICENSE.md$
+^azure-pipelines\.yml$
+^azure-pipelines_site\.pp$
+^adonis_script.Rmd$
+^capscale_script.Rmd$
+^diversity_script.Rmd$
+^vegdist_script.Rmd$

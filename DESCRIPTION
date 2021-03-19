@@ -1,0 +1,11 @@
+Package: dsMicrobiomeClient
+Title: DataSHIELD Microbiome Client Functions Prototype
+Version: 0.0.0-02
+Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
+Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
+License: GPL-3
+Description: DataSHIELD Microbiome Client Functions Prototype for the client side.
+Depends: R (>= 3.5.0),
+    DSI
+RoxygenNote: 7.1.1
+Encoding: UTF-8
