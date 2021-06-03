@@ -12,7 +12,6 @@
 
 ds.capscale <- function(formula, data.name, datasources=NULL)
 {
-    print('@1')
     # look for DS connections
     if (is.null(datasources))
     {
@@ -27,12 +26,7 @@ ds.capscale <- function(formula, data.name, datasources=NULL)
     formula.transmit   <- formula
     data.name.transmit <- data.name
     
-    print('@1')
-    print(formula.transmit)
-    print(data.name.transmit)
     cally               <- call("capscaleDS", formula.transmit, data.name.transmit)
-    print('@1')
-    print('@1')
     capscale.raw.result <- DSI::datashield.aggregate(datasources, cally)
     
     capscale.result <- capscale.raw.result

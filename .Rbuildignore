@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README.txt$
+^LICENSE$
 ^LICENSE.md$
 ^azure-pipelines\.yml$
 ^azure-pipelines_site\.pp$
@@ -8,3 +9,4 @@
 ^capscale_script.Rmd$
 ^diversity_script.Rmd$
 ^vegdist_script.Rmd$
+^tutorials$

@@ -5,7 +5,7 @@ output: html_notebook
 
 # Demo of dsMicrobiomeClient
 
-## Setup DataSHIELD's dsMicrobiome package
+## Setup DataSHIELD's dsMicrobiomeClient package
 
 ### Requirements
 

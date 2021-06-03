@@ -1,6 +1,6 @@
 Package: dsMicrobiomeClient
 Title: DataSHIELD Microbiome Client Functions Prototype
-Version: 0.0.0-02
+Version: 0.0.1-00
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3

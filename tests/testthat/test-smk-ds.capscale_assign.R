@@ -14,7 +14,7 @@
 
 context("ds.capscale_assign::smk::setup")
 
-connect.studies.dataset.hackathon(list("class_Actinobacteria_id_419", "class_Alphaproteobacteria_id_2379"))
+connect.studies.dataset.hackathon(list("breads", "cheese"))
 
 test_that("setup", {
     ds_expect_variables(c("D"))
@@ -26,7 +26,9 @@ test_that("setup", {
 
 context("ds.capscale_assign::smk")
 test_that("simple capscale_assign", {
-    res <- ds.capscale_assign(class_Actinobacteria_id_419~class_Alphaproteobacteria_id_2379, "D", newobj="capscale_obj")
+    ds.completeCases("D", "X")
+
+    res <- ds.capscale_assign(X$breads~X$cheese, "X", newobj="capscale_obj")
 
     expect_length(res, 0)
 
@@ -39,20 +41,27 @@ test_that("simple capscale_assign", {
     res_class <- ds.class("capscale_obj")
 
     expect_length(res_class, 1)
-    expect_length(res_class$study1, 1)
-    expect_equal(res_class$study1, "capscale")
+    expect_length(res_class$study1, 3)
+    expect_true(all(c("capscale", "rda", "cca") %in% res_class$study1))
 
-#    res_names <- ds.names("capscale_obj")
+    res_names <- ds.names("capscale_obj")
 
-#    expect_length(res_names, 1)
-#    expect_length(res_names$study1, 7)
-#    expect_equal(res_names$study1[1], "")
-#    expect_equal(res_names$study1[2], "")
-#    expect_equal(res_names$study1[3], "")
-#    expect_equal(res_names$study1[4], "")
-#    expect_equal(res_names$study1[5], "")
-#    expect_equal(res_names$study1[6], "")
-#    expect_equal(res_names$study1[7], "")
+    expect_length(res_names, 1)
+    expect_length(res_names$study1, 14)
+    expect_equal(res_names$study1[1], "tot.chi")
+    expect_equal(res_names$study1[2], "Ybar")
+    expect_equal(res_names$study1[3], "method")
+    expect_equal(res_names$study1[4], "call")
+    expect_equal(res_names$study1[5], "pCCA")
+    expect_equal(res_names$study1[6], "CCA")
+    expect_equal(res_names$study1[7], "CA")
+    expect_equal(res_names$study1[8], "vdata")
+    expect_equal(res_names$study1[9], "colsum")
+    expect_equal(res_names$study1[10], "terms")
+    expect_equal(res_names$study1[11], "terminfo")
+    expect_equal(res_names$study1[12], "sqrt.dist")
+    expect_equal(res_names$study1[13], "adjust")
+    expect_equal(res_names$study1[14], "inertia")
 })
 
 #
@@ -62,7 +71,7 @@ test_that("simple capscale_assign", {
 context("ds.capscale_assign::smk::shutdown")
 
 test_that("shutdown", {
-    ds_expect_variables(c("D", "capscale_obj"))
+    ds_expect_variables(c("D", "X", "capscale_obj"))
 })
 
 disconnect.studies.dataset.hackathon()
